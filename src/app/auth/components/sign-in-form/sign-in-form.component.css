@@ -1,0 +1,19 @@
+.form-container {
+  background-color: white;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+}
+.form-name {
+  color: #204051;
+  font-size: 36px;
+  font-weight: 500;
+  border-bottom: 1px solid #204051;
+}
+.form-submit-btn {
+  width: 30%;
+}
+.more-information {
+  display: flex;
+  justify-content: space-between;
+}
