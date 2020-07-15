@@ -1,0 +1,12 @@
+.card-container {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #204051;
+  margin: 10px 0px;
+  transition: 0.5s;
+}
+.card-container:hover {
+  box-shadow: 4px 4px 2px grey;
+  transition: 0.5s;
+  cursor: pointer;
+}

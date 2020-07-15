@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://intern-2020.southeastasia.cloudapp.azure.com:4000/api/v1',
+  apiUrl: 'https://localhost:44329/api/v1',
 };
 
 /*

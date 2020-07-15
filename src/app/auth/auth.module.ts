@@ -8,8 +8,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { AuthService } from './services';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { authFeatureKey } from './reducers';
+import { authReducer } from './reducers/auth.reducer';
+import { AuthEffect } from './effects/auth.effect';
 
 @NgModule({
   declarations: [SignInFormComponent, AuthPageComponent],
@@ -17,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
+    StoreModule.forFeature(authFeatureKey, authReducer),
+    EffectsModule.forFeature([AuthEffect]),
   ],
   providers: [
     {

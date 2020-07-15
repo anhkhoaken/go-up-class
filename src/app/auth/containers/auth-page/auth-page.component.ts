@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthState } from '../../reducers/auth.reducer';
+import { Store } from '@ngrx/store';
+import { AuthActions } from '../../actions';
 
 @Component({
   selector: 'app-auth-page',
@@ -7,13 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthPageComponent implements OnInit {
 
-  constructor() {
+  constructor(private store: Store<AuthState>) {
   }
 
   ngOnInit(): void {
   }
 
   logAuthModel(value) {
-    console.log(value);
+    this.store.dispatch(AuthActions.signIn({auth: value}));
   }
 }

@@ -11,19 +11,19 @@ import { catchError } from 'rxjs/operators';
 
 import { HttpError } from './http-error.model';
 
-
 @Injectable()
 export class ErrorHandlerInterceptor implements HttpInterceptor {
-
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-
-
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
-      catchError(err => {
+      catchError((err) => {
         const error: HttpError = {
           status: err.status,
           ok: err.ok,
-          message: err.error && err.error.errors && err.error.errors[0].errorMessage,
+          message:
+            err.error && err.error.errors && err.error.errors[0].errorMessage,
         };
 
         return throwError(error);

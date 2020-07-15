@@ -7,7 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AuthModule,
     HttpClientModule,
     CoreModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

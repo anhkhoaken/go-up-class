@@ -1,0 +1,12 @@
+.class-list-container {
+  height: 100%;
+  overflow-y: auto;
+}
+.list-name {
+  width: 80%;
+  margin: 10px 20px;
+  border-bottom: 1px solid #2c3e50;
+}
+.class-list-content {
+  margin-left: 20px;
+}

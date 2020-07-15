@@ -12,22 +12,22 @@ const routes: Routes = [
   {
     path: 'work',
     component: DefaultLayoutComponent,
-    canActivate: [AuthGuardGuard],
+    // canActivate: [AuthGuardGuard],
     children: [
       {
-        path: '',
+        path: 'dashboard',
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
       },
       {
-        path: '',
-        loadChildren: () => import('./infomation/infomation.module').then(m => m.InfomationModule),
+        path: 'information',
+        loadChildren: () => import('./information/infomation.module').then(m => m.InformationModule),
       },
       {
-        path: '',
+        path: 'workspace',
         loadChildren: () => import('./workspace/workspace.module').then(m => m.WorkspaceModule),
       },
       {
-        path: '',
+        path: 'schedule',
         loadChildren: () => import('./schedule/schedule.module').then(m => m.ScheduleModule),
       },
     ]

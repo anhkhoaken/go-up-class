@@ -9,7 +9,11 @@ export class AuthService {
   constructor(private httpClient: HttpClient) { }
 
   signIn(user: AuthModel) {
-    return this.httpClient.post(`${environment.apiUrl}/auth/authenticate`, user);
+    return this.httpClient.post(`${environment.apiUrl}/Users/authen`, user);
+  }
+
+  getUser() {
+    return this.httpClient.get(`${environment.apiUrl}/Users/user-infor`);
   }
 
   getToken() {
