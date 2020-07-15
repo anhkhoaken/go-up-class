@@ -1,10 +1,9 @@
-<div class="default-container p-0 m-0">
-  <app-header></app-header>
-  <div class="content-container">
-    <app-side-nav [information]="accountInformation$ | async" *ngIf="accountInformation$ | async" class="side-nav-style"></app-side-nav>
-    <main class="main-content">
-      <router-outlet></router-outlet>
-    </main>
-<!--    <app-footer></app-footer>-->
-  </div>
-</div>
+<nb-layout>
+  <nb-layout-header fixed>
+    <button nbButton status="success" size="tiny" (click)="toggle()">Toggle</button>
+  </nb-layout-header>
+  <nb-sidebar tag="left"></nb-sidebar>
+  <nb-layout-column class="colored-column-warning">
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+</nb-layout>
