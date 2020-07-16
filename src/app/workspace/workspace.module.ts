@@ -12,12 +12,12 @@ import { IssueCardComponent } from './components/issue-card/issue-card.component
 import { AnswerCardComponent } from './components/answer-card/answer-card.component';
 
 @NgModule({
-  declarations: [CONTAINERS, COMPONENTS, ChapterListPageComponent, ListLessonPageComponent, LessonCardComponent, ChapterCardComponent, IssueCardComponent, AnswerCardComponent],
+  declarations: [CONTAINERS, COMPONENTS],
   imports: [
     CommonModule,
     WorkspaceRouting,
     NbCardModule,
     NbAccordionModule
-  ]
+  ],
 })
 export class WorkspaceModule { }

@@ -2,7 +2,13 @@
   <nb-layout-header fixed>
     <button nbButton status="success" size="tiny" (click)="toggle()">Toggle</button>
   </nb-layout-header>
-  <nb-sidebar tag="left"></nb-sidebar>
+  <nb-sidebar tag="left">
+    <div style="width: 100%; display: flex; justify-content: center; flex-direction: column">
+      <img src="./assets/img/Logo_nav.png" alt="" style="width: 200px; height: 200px">
+    </div>
+    <nb-menu [items]="items" style="margin-top: 10px">
+    </nb-menu>
+  </nb-sidebar>
   <nb-layout-column class="colored-column-warning">
     <router-outlet></router-outlet>
   </nb-layout-column>

@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { COMPONENTS } from './index';
 import { DefaultLayoutComponent } from './default-layout/default-layout.component';
 import { RouterModule } from '@angular/router';
-import { NbButtonModule, NbLayoutModule, NbSidebarModule, NbSidebarService } from '@nebular/theme';
+import { NbButtonModule, NbCardModule, NbLayoutModule, NbMenuModule, NbSidebarModule, NbSidebarService } from '@nebular/theme';
+import { NbMenuInternalService } from '@nebular/theme/components/menu/menu.service';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,9 @@ import { NbButtonModule, NbLayoutModule, NbSidebarModule, NbSidebarService } fro
     RouterModule,
     NbLayoutModule,
     NbSidebarModule,
-    NbButtonModule
+    NbButtonModule,
+    NbCardModule,
+    NbMenuModule,
   ],
   providers: [NbSidebarService],
   exports: [

@@ -1,0 +1,63 @@
+<div>
+  <div class="row">
+    <div cdkDropListGroup>
+      <div class="example-container">
+        <h2>To do</h2>
+
+        <div
+          cdkDropList
+          [cdkDropListData]="todo"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+        </div>
+      </div>
+
+      <div class="example-container">
+        <h2>Doing</h2>
+
+        <div
+          cdkDropList
+          [cdkDropListData]="done"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+        </div>
+      </div>
+
+      <div class="example-container">
+        <h2>Done</h2>
+
+        <div
+          cdkDropList
+          [cdkDropListData]="done"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+        </div>
+      </div>
+      <div style="padding: 10px">
+        <button class="btn btn-primary m-1" title="Save"> Save</button>
+        <button class="btn btn-primary m-1" title="Create"> Create</button>
+      </div>
+    </div>
+  </div>
+  <div class="tag-information">
+    <form>
+      <div class="form-group mb-3">
+        <label for="tagName-input">Tag Name: </label>
+        <input type="text" nbInput fullWidth status="basic" placeholder="Input your TagName" name="tagName"
+               id="tagName-input">
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="tagDo-input">Tag Doing: </label>
+        <input type="text" nbInput fullWidth status="basic" placeholder="Input what you need to do" name="tagDo"
+               id="tagDo-input">
+      </div>
+    </form>
+    <div style="display: flex; justify-content: flex-end">
+      <button nbButton status="primary">Save</button>
+    </div>
+  </div>
+</div>
