@@ -15,7 +15,7 @@ const routes: Routes = [
     component: ListLessonPageComponent,
   },
   {
-    path: ':classId/:lessonId/listChapter',
+    path: ':classId/listLesson/:lessonId/listChapter',
     component: ChapterListPageComponent
   },
 ];

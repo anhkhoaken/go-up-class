@@ -19,7 +19,7 @@ export class DefaultLayoutComponent implements OnInit {
     {
       title: 'Dashboard',
       icon: 'lock-outline',
-      link: './workspace'
+      link: './dashboard'
     },
     {
       title: 'Classes',

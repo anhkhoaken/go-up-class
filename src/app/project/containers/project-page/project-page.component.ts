@@ -37,6 +37,10 @@ export class ProjectPageComponent implements OnInit {
   constructor() {
   }
 
+  saveOnlick() {
+    this.todo.push('Vẽ sơ đồ database');
+  }
+
   ngOnInit(): void {
   }
 }

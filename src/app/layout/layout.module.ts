@@ -3,7 +3,15 @@ import { CommonModule } from '@angular/common';
 import { COMPONENTS } from './index';
 import { DefaultLayoutComponent } from './default-layout/default-layout.component';
 import { RouterModule } from '@angular/router';
-import { NbButtonModule, NbCardModule, NbLayoutModule, NbMenuModule, NbSidebarModule, NbSidebarService } from '@nebular/theme';
+import {
+  NbButtonModule,
+  NbCardModule, NbIconModule,
+  NbLayoutModule,
+  NbMenuModule,
+  NbSidebarModule,
+  NbSidebarService,
+  NbUserModule
+} from '@nebular/theme';
 import { NbMenuInternalService } from '@nebular/theme/components/menu/menu.service';
 
 @NgModule({
@@ -18,6 +26,8 @@ import { NbMenuInternalService } from '@nebular/theme/components/menu/menu.servi
     NbButtonModule,
     NbCardModule,
     NbMenuModule,
+    NbUserModule,
+    NbIconModule,
   ],
   providers: [NbSidebarService],
   exports: [

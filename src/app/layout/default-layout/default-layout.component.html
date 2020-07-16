@@ -1,6 +1,18 @@
 <nb-layout>
   <nb-layout-header fixed>
-    <button nbButton status="success" size="tiny" (click)="toggle()">Toggle</button>
+    <nb-icon icon="menu-outline" (click)="toggle()"></nb-icon>
+    <div style="width: 80%">
+
+    </div>
+    <nb-card>
+      <nb-card-body>
+        <nb-user size="medium"
+                 name="Anh Khoa"
+                 title="Engineer"
+                 [showTitle]="false">
+        </nb-user>
+      </nb-card-body>
+    </nb-card>
   </nb-layout-header>
   <nb-sidebar tag="left">
     <div style="width: 100%; display: flex; justify-content: center; flex-direction: column">
