@@ -1,80 +1,32 @@
 <div class="row">
   <div class="col-8 p-0" >
     <nb-accordion multi >
-      <nb-accordion-item>
+      <nb-accordion-item *ngFor="let chapter of listChapter$ | async">
         <nb-accordion-item-header>
-          Java Swing buổi 1
+          {{chapter.no}}
         </nb-accordion-item-header>
         <nb-accordion-item-body>
           <nb-card>
-            <nb-card-header>Bắt đầu với Swing 1</nb-card-header>
+            <nb-card-header>{{chapter.name}}</nb-card-header>
             <nb-card-body>
-              A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
-              Originally, nebula was a name for any diffuse astronomical object,
-              including galaxies beyond the Milky Way.
+              <div>
+                {{chapter.code}}
+              </div>
+              <div>
+                {{chapter.theory}}
+              </div>
             </nb-card-body>
             <nb-card-footer>
-              <button class="btn btn-primary" (click)="btnClick()">Issue</button>
+              <button class="btn btn-primary" (click)="btnClick(chapter.id)">Issue</button>
             </nb-card-footer>
-          </nb-card>
-        </nb-accordion-item-body>
-      </nb-accordion-item>
-
-      <nb-accordion-item>
-        <nb-accordion-item-header>
-          Java Swing buổi 2
-        </nb-accordion-item-header>
-        <nb-accordion-item-body>
-          <nb-card>
-            <nb-card-header>Swing là gì</nb-card-header>
-            <nb-card-body>
-              A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
-              Originally, nebula was a name for any diffuse astronomical object,
-              including galaxies beyond the Milky Way.
-            </nb-card-body>
-            <nb-card-footer>By Wikipedia</nb-card-footer>
-          </nb-card>
-        </nb-accordion-item-body>
-      </nb-accordion-item>
-
-      <nb-accordion-item>
-        <nb-accordion-item-header>
-          Java Swing buổi 3
-        </nb-accordion-item-header>
-        <nb-accordion-item-body>
-          <nb-card>
-            <nb-card-header>Chương trình Swing đầu tiên</nb-card-header>
-            <nb-card-body>
-              A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
-              Originally, nebula was a name for any diffuse astronomical object,
-              including galaxies beyond the Milky Way.
-            </nb-card-body>
-            <nb-card-footer>By Wikipedia</nb-card-footer>
-          </nb-card>
-        </nb-accordion-item-body>
-      </nb-accordion-item>
-
-      <nb-accordion-item>
-        <nb-accordion-item-header>
-          Java Swing buổi 4
-        </nb-accordion-item-header>
-        <nb-accordion-item-body>
-          <nb-card>
-            <nb-card-header>Nebula</nb-card-header>
-            <nb-card-body>
-              A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
-              Originally, nebula was a name for any diffuse astronomical object,
-              including galaxies beyond the Milky Way.
-            </nb-card-body>
-            <nb-card-footer>By Wikipedia</nb-card-footer>
           </nb-card>
         </nb-accordion-item-body>
       </nb-accordion-item>
     </nb-accordion>
   </div>
-  <div class="col-4" style="overflow-y: auto;" *ngIf="show">
-    <app-issue-card></app-issue-card>
-    <app-issue-card></app-issue-card>
-    <app-issue-card></app-issue-card>
+  <div class="col-4" style="overflow-y: auto;" *ngIf="qaa">
+    <div *ngFor="let item of qaa">
+      <app-issue-card [qaa]="item"></app-issue-card>
+    </div>
   </div>
 </div>

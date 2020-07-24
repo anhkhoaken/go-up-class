@@ -4,4 +4,5 @@ export class ChapterModel {
   code: string;
   no: number;
   lessonId: string;
+  name: string;
 }

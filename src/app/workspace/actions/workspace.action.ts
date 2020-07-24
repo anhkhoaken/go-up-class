@@ -4,7 +4,7 @@ import { HttpError } from '../../core/http-error.model';
 import { LessonModel } from '../models/lesson.model';
 import { ChapterModel } from '../models/chapter.model';
 import { IssueModel } from '../models/issue.model';
-import { AnswerModel } from '../models/answer.model';
+import { AnswerModel, QAndAModel } from '../models/answer.model';
 
 export const getClassesInformation = createAction(
   '[Workspace] Get Class Information',
@@ -63,6 +63,21 @@ export const getChapterInformationSuccess = createAction(
 
 export const getChapterInformationFail = createAction(
   '[Workspace] Get Chapter Information Fail',
+  props<{ error: HttpError }>()
+);
+
+export const getListAnswerAndQuestion = createAction(
+  '[Workspace] Get List Question and Answer',
+  props<{ chapterId: string }>()
+);
+
+export const getListAnswerAndQuestionSuccess = createAction(
+  '[Workspace] Get List Question and Answer Sucess',
+  props<{ result: Array<QAndAModel> }>()
+);
+
+export const getListAnswerAndQuestionFail = createAction(
+  '[Workspace] Get List Question and Answer Fail',
   props<{ error: HttpError }>()
 );
 

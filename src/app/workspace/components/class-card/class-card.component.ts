@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Class } from '../../models/class.model';
 
 @Component({
@@ -8,10 +8,18 @@ import { Class } from '../../models/class.model';
 })
 export class ClassCardComponent implements OnInit {
   @Input() myClass: Class;
-  constructor() { }
+
+  @Output() saveSelectClassId = new EventEmitter<string>();
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     console.log(this.myClass);
+  }
+
+  onSaveSelectClassId(){
+    this.saveSelectClassId.emit(this.myClass.id);
   }
 
 }

@@ -1,10 +1,8 @@
-<nb-card status="success" size="tiny">
+<nb-card status="success" size="tiny" (click)="onSaveSelectClassId()">
   <nb-card-header>
-    <a href="" style="text-decoration: none" routerLink="./ask/listLesson">
-      <h4>SE003 - Đồ Án Chuyên Ngành</h4>
-    </a>
+    <h4>{{myClass.code}} - {{myClass.name}}</h4>
   </nb-card-header>
   <nb-card-body>
-    <h5> Giáo viên: Lê Thanh Trọng</h5>
+    <h5> Giáo viên: {{myClass.teacherId}}</h5>
   </nb-card-body>
 </nb-card>

@@ -18,7 +18,7 @@ export class WorkspaceEffect {
     this.actions$.pipe(
       ofType(workspaceActions.getClassesInformation),
       exhaustMap((action) =>
-        this.workspaceService.getListClass(action.listClassId).pipe(
+        this.workspaceService.getListClass().pipe(
           map((res: any) => workspaceActions.getClassesInformationSuccess({listClass: res})),
           catchError(err => of(workspaceActions.getClassesInformationFail({error: err})))
         )
@@ -69,6 +69,18 @@ export class WorkspaceEffect {
         this.workspaceService.getListAnswer(action.issueId).pipe(
           map((res: any) => workspaceActions.getListAnswerSuccess({listAnswer: res})),
           catchError(err => of(workspaceActions.getListAnswerFail({error: err})))
+        )
+      )
+    )
+  );
+
+  getListQaa$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(workspaceActions.getListAnswerAndQuestion),
+      exhaustMap((action) =>
+        this.workspaceService.getListQuestionAndAnswer(action.chapterId).pipe(
+          map((res: any) => workspaceActions.getListAnswerAndQuestionSuccess({result: res})),
+          catchError(err => of(workspaceActions.getListAnswerAndQuestionFail({error: err})))
         )
       )
     )

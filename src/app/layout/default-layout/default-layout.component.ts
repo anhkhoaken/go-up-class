@@ -15,6 +15,8 @@ import { NbMenuInternalService } from '@nebular/theme/components/menu/menu.servi
 })
 export class DefaultLayoutComponent implements OnInit {
   accountInformation$: Observable<AccountInformation>;
+
+  account: AccountInformation;
   items: NbMenuItem[] = [
     {
       title: 'Dashboard',
@@ -54,7 +56,12 @@ export class DefaultLayoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.accountInformation$ = this.store.pipe(select(selectAuthInformation));
+
+    this.accountInformation$.subscribe(value => {
+      this.account = value;
+    });
   }
+
   toggle() {
     this.sidebarService.toggle(false, 'left');
   }

@@ -4,6 +4,13 @@ import { ProjectPageComponent } from './containers/project-page/project-page.com
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ProjectRoutingModule } from './project-routing.module';
 import { NbButtonModule, NbInputModule } from '@nebular/theme';
+import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { projectFeatureKey } from './reducers';
+import { projectReducer } from './reducers/project.reducer';
+import { ProjectEffect } from './effects/project.effect';
+import { ProjectService } from './services';
 
 
 
@@ -14,7 +21,11 @@ import { NbButtonModule, NbInputModule } from '@nebular/theme';
     DragDropModule,
     ProjectRoutingModule,
     NbInputModule,
-    NbButtonModule
-  ]
+    NbButtonModule,
+    ReactiveFormsModule,
+    StoreModule.forFeature(projectFeatureKey, projectReducer),
+    EffectsModule.forFeature([ProjectEffect]),
+  ],
+  providers: [ProjectService]
 })
 export class ProjectModule { }

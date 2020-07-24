@@ -1,8 +1,8 @@
 <nb-card>
-  <nb-card-header>Câu hỏi</nb-card-header>
-  <nb-card-body>
-    <app-answer-card></app-answer-card>
-    <app-answer-card></app-answer-card>
-    <app-answer-card></app-answer-card>
+  <nb-card-header>{{qaa.issue.question}}</nb-card-header>
+  <nb-card-body *ngIf="qaa">
+    <div *ngFor="let item of qaa.answers">
+      <app-answer-card [answer]="item"></app-answer-card>
+    </div>
   </nb-card-body>
 </nb-card>

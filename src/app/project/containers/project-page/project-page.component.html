@@ -9,7 +9,8 @@
           [cdkDropListData]="todo"
           class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+          <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item.name}}
+          </div>
         </div>
       </div>
 
@@ -18,10 +19,10 @@
 
         <div
           cdkDropList
-          [cdkDropListData]="done"
+          [cdkDropListData]="doing"
           class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+          <div class="example-box" *ngFor="let item of doing" cdkDrag>{{item.name}}</div>
         </div>
       </div>
 
@@ -33,31 +34,30 @@
           [cdkDropListData]="done"
           class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+          <div class="example-box" *ngFor="let item of done" cdkDrag>{{item.name}}</div>
         </div>
       </div>
       <div style="padding: 10px">
-        <button class="btn btn-primary m-1" title="Save"> Save</button>
-        <button class="btn btn-primary m-1" title="Create"> Create</button>
+        <button class="btn btn-primary m-1" title="Save" (click)="onSaveProject()" type="button"> Save</button>
       </div>
     </div>
   </div>
   <div class="tag-information">
-    <form>
+    <form [formGroup]="rfTodoInfo" (ngSubmit)="saveOnClick()">
       <div class="form-group mb-3">
         <label for="tagName-input">Tag Name: </label>
         <input type="text" nbInput fullWidth status="basic" placeholder="Input your TagName" name="tagName"
-               id="tagName-input">
+               id="tagName-input" formControlName="name">
       </div>
 
       <div class="form-group mb-3">
         <label for="tagDo-input">Tag Doing: </label>
         <input type="text" nbInput fullWidth status="basic" placeholder="Input what you need to do" name="tagDo"
-               id="tagDo-input">
+               id="tagDo-input" formControlName="todo">
+      </div>
+      <div style="display: flex; justify-content: flex-end">
+        <button nbButton status="primary" type="submit">Create</button>
       </div>
     </form>
-    <div style="display: flex; justify-content: flex-end">
-      <button nbButton status="primary" (click)="saveOnlick()">Save</button>
-    </div>
   </div>
 </div>

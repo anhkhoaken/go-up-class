@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'work',
     component: DefaultLayoutComponent,
-    // canActivate: [AuthGuardGuard],
+    canActivate: [AuthGuardGuard],
     children: [
       {
         path: 'dashboard',

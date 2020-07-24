@@ -3,13 +3,18 @@ import { CommonModule } from '@angular/common';
 import { WorkspaceRouting } from './workspace-routing';
 import { CONTAINERS } from './containers';
 import { COMPONENTS } from './components';
-import { ChapterListPageComponent } from './containers/chapter-list-page/chapter-list-page.component';
 import { NbAccordionModule, NbCardModule } from '@nebular/theme';
-import { ListLessonPageComponent } from './containers/list-lesson-page/list-lesson-page.component';
-import { LessonCardComponent } from './components/lesson-card/lesson-card.component';
-import { ChapterCardComponent } from './components/chapter-card/chapter-card.component';
-import { IssueCardComponent } from './components/issue-card/issue-card.component';
-import { AnswerCardComponent } from './components/answer-card/answer-card.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { workspaceKey } from './actions/workspace.action';
+import { workspaceReducer } from './reducers/workspace.reducer';
+import { WorkspaceEffect } from './effects/workspace.effect';
+import { WorkspaceService } from './services/workspace.service';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [CONTAINERS, COMPONENTS],
@@ -17,7 +22,15 @@ import { AnswerCardComponent } from './components/answer-card/answer-card.compon
     CommonModule,
     WorkspaceRouting,
     NbCardModule,
-    NbAccordionModule
+    NbAccordionModule,
+    StoreModule.forFeature(workspaceKey, workspaceReducer),
+    EffectsModule.forFeature([WorkspaceEffect]),
+    MatDialogModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatInputModule,
+    MatButtonModule,
   ],
+  providers: [WorkspaceService]
 })
 export class WorkspaceModule { }

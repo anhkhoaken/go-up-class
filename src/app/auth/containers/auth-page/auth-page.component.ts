@@ -18,7 +18,7 @@ export class AuthPageComponent implements OnInit {
   }
 
   logAuthModel(value) {
+    this.store.dispatch(AuthActions.signIn({ auth: value }));
     this.router.navigate(['/work/workspace']);
-    //this.store.dispatch(AuthActions.signIn({auth: value}));
   }
 }

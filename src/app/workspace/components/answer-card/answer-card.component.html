@@ -1,13 +1,11 @@
 <nb-reveal-card>
   <nb-card-front>
     <nb-card accent="success">
-      <nb-card-header>Câu trả lời 1</nb-card-header>
+      <nb-card-header> {{answer.userName}} </nb-card-header>
       <nb-card-body>
-        A nebula is an interstellar cloud of dust, hydrogen,
-        helium and other ionized gases.
-        Originally, nebula was a name for
-        any diffuse astronomical object,
-        including galaxies beyond the Milky Way.
+        <div style="height: 100px">
+          {{answer.content}}
+        </div>
       </nb-card-body>
     </nb-card>
   </nb-card-front>
@@ -15,7 +13,9 @@
     <nb-card accent="primary">
       <nb-card-header>Thông tin người trả lời</nb-card-header>
       <nb-card-body>
-        <p>Tên: Nguyễn văn A</p>
+        <div style="height: 100px">
+          <p>Tên: {{answer.userName}}</p>
+        </div>
       </nb-card-body>
     </nb-card>
   </nb-card-back>
