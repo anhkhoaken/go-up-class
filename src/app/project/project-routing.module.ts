@@ -5,7 +5,7 @@ import { ProjectPageComponent } from './containers/project-page/project-page.com
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':groupId/project',
     component: ProjectPageComponent,
   }
 ];

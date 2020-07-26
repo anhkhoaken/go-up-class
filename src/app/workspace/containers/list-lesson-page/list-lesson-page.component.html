@@ -1,3 +1,8 @@
 <div class="row" *ngFor="let lesson of listLesson">
-  <app-lesson-card [myLesson]="lesson"></app-lesson-card>
+  <app-lesson-card [myLesson]="lesson" (changeSelectLesson)="onChangeSelectLesson($event)"></app-lesson-card>
+  <div *ngIf="listQuestion">
+    <div *ngFor="let item of listQuestion">
+      <app-issue-card [qaa]="item"></app-issue-card>
+    </div>
+  </div>
 </div>

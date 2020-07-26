@@ -1,7 +1,7 @@
 <nb-reveal-card>
   <nb-card-front>
     <nb-card accent="success">
-      <nb-card-header> {{answer.userName}} </nb-card-header>
+      <nb-card-header> {{answer.groupName}} </nb-card-header>
       <nb-card-body>
         <div style="height: 100px">
           {{answer.content}}
@@ -11,10 +11,10 @@
   </nb-card-front>
   <nb-card-back>
     <nb-card accent="primary">
-      <nb-card-header>Thông tin người trả lời</nb-card-header>
+      <nb-card-header>Trả lời vào lúc</nb-card-header>
       <nb-card-body>
         <div style="height: 100px">
-          <p>Tên: {{answer.userName}}</p>
+          <p>Giờ: {{answer.createAt}}</p>
         </div>
       </nb-card-body>
     </nb-card>

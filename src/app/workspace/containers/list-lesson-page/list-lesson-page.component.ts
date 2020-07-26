@@ -8,6 +8,7 @@ import { LessonModel } from '../../models/lesson.model';
 import { Params } from '@angular/router';
 import { selectRouterParams } from '../../../core/store/selectors';
 import { AppState } from '../../../core/store/reducers';
+import { QuestionModel } from '../../models/issue.model';
 
 @Component({
   selector: 'app-list-lesson-page',
@@ -20,27 +21,40 @@ export class ListLessonPageComponent implements OnInit {
   listLesson: Array<LessonModel>;
   classId: string;
   params$: Observable<Params>;
+  listQuestion$: Observable<Array<QuestionModel>>;
+  listQuestion: Array<QuestionModel>;
 
   constructor(private store: Store<WorkspaceState>, private route: Store<AppState>) {
     this.params$ = this.route.pipe(select(selectRouterParams));
   }
 
   ngOnInit(): void {
-    this.selectClass$ = this.store.pipe(select(WorkspaceSelector.selectClass));
-    this.listLesson$ = this.store.pipe(select(WorkspaceSelector.getListLesson));
+    this.selectClass$ = this.store.pipe(select(WorkspaceSelector.selectWorkspaceClass));
+    this.listLesson$ = this.store.pipe(select(WorkspaceSelector.selectWorkspaceLessons));
+    this.listQuestion$ = this.store.pipe(select(WorkspaceSelector.selectWorkspaceIssues));
     this.params$.subscribe(value => {
       if (!!value) {
         this.classId = value['classId'];
       }
     });
+    this.listQuestion$.subscribe(value => {
+      if (!!value) {
+        this.listQuestion = value;
+      }
+    });
     console.log(this.classId);
-    this.store.dispatch(workspaceActions.getListLesson({ classId: this.classId }));
+    this.store.dispatch(workspaceActions.getLessons({ classId: this.classId }));
 
     this.listLesson$.subscribe(value => {
       if (!!value) {
         this.listLesson = value;
       }
     });
+  }
+
+  onChangeSelectLesson(lessonId: string){
+    console.log(lessonId);
+    this.store.dispatch(workspaceActions.getIssues({lessonId}));
   }
 
 }

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthModel } from '../models';
+import { AccountInformation, AuthModel } from '../models';
 import { environment } from '../../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -12,8 +13,8 @@ export class AuthService {
     return this.httpClient.post(`${environment.apiUrl}/Users/authen`, user);
   }
 
-  getUser() {
-    return this.httpClient.get(`${environment.apiUrl}/Users/user-infor`);
+  getUser(): Observable<AccountInformation> {
+    return this.httpClient.get<AccountInformation>(`${environment.apiUrl}/Classes/get-user-result`);
   }
 
   getToken() {

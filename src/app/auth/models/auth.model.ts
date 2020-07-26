@@ -1,18 +1,25 @@
-import { last } from 'rxjs/operators';
-
 export class AuthModel {
   username: string;
   password: string;
 }
 
 export class AccountInformation {
+  id: string;
+  username: string;
   firstName: string;
   lastName: string;
-  listClass: Array<string>;
-
-  constructor(firstName: string, lastName: string, listClass: Array<string>) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.listClass = listClass;
-  }
+  classResults: Array<ClassInformation>;
+  groupResults: Array<GroupInformation>;
 }
+
+export class ClassInformation {
+  id: string;
+  name: string;
+  no: string;
+}
+
+export class GroupInformation{
+  id: string;
+  name: string;
+}
+

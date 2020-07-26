@@ -8,6 +8,9 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { SchedulePageComponent } from './containers/schedule-page/schedule-page.component';
 import { ScheduleRoutingModule } from './schedule-routing.module';
 import { ScheduleComponentComponent } from './components/schedule-component/schedule-component.component';
+import { MonthService, ScheduleModule } from '@syncfusion/ej2-angular-schedule';
+import { NbButtonModule, NbCardModule } from '@nebular/theme';
+import { ScheduleService } from './service/schedule.service';
 
 
 
@@ -23,8 +26,11 @@ import { ScheduleComponentComponent } from './components/schedule-component/sche
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    ScheduleModule,
+    NbButtonModule,
+    NbCardModule,
   ],
-  providers: [],
+  providers: [MonthService, ScheduleService],
   exports: [SchedulePageComponent]
 })
-export class ScheduleModule { }
+export class MyScheduleModule { }

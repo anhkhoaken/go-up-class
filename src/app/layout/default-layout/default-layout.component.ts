@@ -17,6 +17,8 @@ export class DefaultLayoutComponent implements OnInit {
   accountInformation$: Observable<AccountInformation>;
 
   account: AccountInformation;
+  classChildren = [];
+  groupChildrenProject = [];
   items: NbMenuItem[] = [
     {
       title: 'Dashboard',
@@ -26,7 +28,8 @@ export class DefaultLayoutComponent implements OnInit {
     {
       title: 'Classes',
       icon: 'person-outline',
-      link: './workspace'
+      expanded: false,
+      children: this.classChildren
     },
     {
       title: 'Schedules',
@@ -36,7 +39,8 @@ export class DefaultLayoutComponent implements OnInit {
     {
       title: 'Project',
       icon: 'lock-outline',
-      link: './project'
+      expanded: false,
+      children: this.groupChildrenProject
     },
     {
       title: 'Privacy Policy',
@@ -58,7 +62,22 @@ export class DefaultLayoutComponent implements OnInit {
     this.accountInformation$ = this.store.pipe(select(selectAuthInformation));
 
     this.accountInformation$.subscribe(value => {
-      this.account = value;
+      if (!!value) {
+        this.account = value;
+        console.log(this.account);
+        this.account.classResults.forEach(va => {
+          this.classChildren.push({
+            title: va.no + ' - ' + va.name,
+            link: 'workspace/' + va.id + '/listLesson'
+          });
+        });
+        this.groupChildrenProject = this.account.groupResults.map(vh => {
+          this.groupChildrenProject.push({
+            title: vh.name,
+            link: +vh.id + '/project'
+          });
+        });
+      }
     });
   }
 

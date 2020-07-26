@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: 'work',
     component: DefaultLayoutComponent,
-    canActivate: [AuthGuardGuard],
+    //canActivate: [AuthGuardGuard],
     children: [
       {
         path: 'dashboard',
@@ -28,7 +28,7 @@ const routes: Routes = [
       },
       {
         path: 'schedule',
-        loadChildren: () => import('./schedule/schedule.module').then(m => m.ScheduleModule),
+        loadChildren: () => import('./schedule/schedule.module').then(m => m.MyScheduleModule),
       },
       {
         path: 'project',

@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { WorkspaceState } from '../reducers/workspace.reducer';
 import { WorkspaceService } from '../services/workspace.service';
 import { workspaceActions } from '../actions';
-import { catchError, exhaustMap, map } from 'rxjs/operators';
+import { catchError, exhaustMap, map, withLatestFrom } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable()
@@ -14,37 +14,13 @@ export class WorkspaceEffect {
               private workspaceService: WorkspaceService) {
   }
 
-  getClassInformation$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(workspaceActions.getClassesInformation),
-      exhaustMap((action) =>
-        this.workspaceService.getListClass().pipe(
-          map((res: any) => workspaceActions.getClassesInformationSuccess({listClass: res})),
-          catchError(err => of(workspaceActions.getClassesInformationFail({error: err})))
-        )
-      )
-    )
-  );
-
   getListLesson$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(workspaceActions.getListLesson),
+      ofType(workspaceActions.getLessons),
       exhaustMap((action) =>
         this.workspaceService.getListLesson(action.classId).pipe(
-          map((res: any) => workspaceActions.getListLessonSuccess({listLesson: res})),
-          catchError(err => of(workspaceActions.getListAnswerFail({error: err})))
-        )
-      )
-    )
-  );
-
-  getListChapter$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(workspaceActions.getListChapter),
-      exhaustMap((action) =>
-        this.workspaceService.getListChapter(action.lessonId).pipe(
-          map((res: any) => workspaceActions.getListChapterSuccess({listChapter: res})),
-          catchError(err => of(workspaceActions.getListChapterFail({error: err})))
+          map((res) => workspaceActions.getLessonsSuccess({ lessons: res })),
+          catchError(err => of(workspaceActions.getLessonsFailed({ error: err })))
         )
       )
     )
@@ -52,35 +28,35 @@ export class WorkspaceEffect {
 
   getListIssue$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(workspaceActions.getListIssue),
+      ofType(workspaceActions.getIssues),
       exhaustMap((action) =>
-        this.workspaceService.getListIssue(action.chapterId).pipe(
-          map((res: any) => workspaceActions.getListIssueSuccess({listIssue: res})),
-          catchError(err => of(workspaceActions.getListIssueFail({error: err})))
+        this.workspaceService.getListIssue(action.lessonId).pipe(
+          map((res) => workspaceActions.getIssuesSuccess({ issues: res })),
+          catchError(err => of(workspaceActions.getIssuesFailed({ error: err })))
         )
       )
     )
   );
 
-  getListAnswer$ = createEffect(() =>
+  createQuestion$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(workspaceActions.getListAnswer),
+      ofType(workspaceActions.createQuestion),
       exhaustMap((action) =>
-        this.workspaceService.getListAnswer(action.issueId).pipe(
-          map((res: any) => workspaceActions.getListAnswerSuccess({listAnswer: res})),
-          catchError(err => of(workspaceActions.getListAnswerFail({error: err})))
+        this.workspaceService.createQuestion(action.question).pipe(
+          map((res) => workspaceActions.createQuestionSuccess()),
+          catchError(err => of(workspaceActions.getIssuesFailed({ error: err })))
         )
       )
     )
   );
 
-  getListQaa$ = createEffect(() =>
+  createAnswer$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(workspaceActions.getListAnswerAndQuestion),
+      ofType(workspaceActions.createAnswer),
       exhaustMap((action) =>
-        this.workspaceService.getListQuestionAndAnswer(action.chapterId).pipe(
-          map((res: any) => workspaceActions.getListAnswerAndQuestionSuccess({result: res})),
-          catchError(err => of(workspaceActions.getListAnswerAndQuestionFail({error: err})))
+        this.workspaceService.createAnswer(action.answer).pipe(
+          map((res) => workspaceActions.createQuestionSuccess()),
+          catchError(err => of(workspaceActions.getIssuesFailed({ error: err })))
         )
       )
     )

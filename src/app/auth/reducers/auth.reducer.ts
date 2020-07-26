@@ -23,11 +23,10 @@ export const reducer = createReducer(
     pending: true,
     error: null,
   })),
-  on(AuthActions.signInSuccess, (state, { token, information }) => ({
+  on(AuthActions.signInSuccess, (state, { token }) => ({
     ...state,
     pending: false,
     error: null,
-    information
   })),
   on(AuthActions.signInFailure, (state, { error }) => ({
     ...state,

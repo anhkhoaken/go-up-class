@@ -20,9 +20,7 @@ export class AuthEffect {
       exhaustMap((action) =>
         this.authService.signIn(action.auth).pipe(
           map((res: any) => {
-            const accountInformation = new AccountInformation(res.firstName, res.lastName, res.listClass);
-            console.log(res.token);
-            return AuthActions.signInSuccess({ token: res.token, information: accountInformation });
+            return AuthActions.signInSuccess({ token: res.token });
           }),
           catchError((error) => of(AuthActions.signInFailure({ error })))
         )
@@ -46,9 +44,8 @@ export class AuthEffect {
       ofType(AuthActions.getUserInformation),
       exhaustMap((action) =>
         this.authService.getUser().pipe(
-          map((res: any) => {
-            const user = new AccountInformation(res.firstName, res.lastName, res.listClass);
-            return AuthActions.getUserInformationSuccess({ userInformation: user });
+          map((res) => {
+            return AuthActions.getUserInformationSuccess({ userInformation: res });
           }),
           catchError((error) => of(AuthActions.getUserInformationFailed({ error })))
         )

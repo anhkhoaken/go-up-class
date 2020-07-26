@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AnswerModel } from '../../models/answer.model';
+import { AnswerModel } from '../../models/issue.model';
 
 @Component({
   selector: 'app-answer-card',

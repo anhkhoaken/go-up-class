@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChapterListPageComponent } from './chapter-list-page.component';
+import { CreateQuestionFormComponent } from './create-question-form.component';
 
-describe('ChapterListPageComponent', () => {
-  let component: ChapterListPageComponent;
-  let fixture: ComponentFixture<ChapterListPageComponent>;
+describe('CreateQuestionFormComponent', () => {
+  let component: CreateQuestionFormComponent;
+  let fixture: ComponentFixture<CreateQuestionFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChapterListPageComponent ]
+      declarations: [ CreateQuestionFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChapterListPageComponent);
+    fixture = TestBed.createComponent(CreateQuestionFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

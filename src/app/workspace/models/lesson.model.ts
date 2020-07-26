@@ -1,6 +1,6 @@
 export class LessonModel {
   id: string;
-  no: string;
   name: string;
+  content: string;
   classId: string;
 }
